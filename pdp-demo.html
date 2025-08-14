@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zapatillas Pro X | Demo interna</title>
+  <link rel="icon" href="assets/logo_ml.svg">
+  <style>
+    :root {
+      --ml-yellow:#ffe600;
+      --text:#333;
+      --muted:#666;
+      --bg:#f5f5f5;
+      --card:#fff;
+      --green:#00a650;
+      --blue:#3483fa;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .demo-badge{position:fixed;z-index:9999;top:8px;right:8px;background:#111;color:#fff;font-size:12px;padding:6px 10px;border-radius:999px;opacity:.9}
+    header{background:var(--ml-yellow);padding:10px 16px;display:flex;align-items:center;gap:12px}
+    header img{width:28px;height:28px}
+    header .search{flex:1}
+    header input{width:100%;padding:10px 12px;border:0;border-radius:8px}
+    main{max-width:1200px;margin:24px auto;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:0 16px}
+    .card{background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.06);padding:16px}
+    .gallery{display:grid;grid-template-columns:80px 1fr;gap:12px;min-height:520px}
+    .thumbs{display:flex;flex-direction:column;gap:8px}
+    .thumbs img{width:80px;height:80px;object-fit:cover;border:1px solid #eee;border-radius:6px;cursor:pointer}
+    .hero{display:flex;align-items:center;justify-content:center;background:#fafafa;border:1px solid #eee;border-radius:8px;min-height:480px}
+    .hero img{max-width:100%;max-height:460px}
+    h1{font-size:22px;margin:0 0 8px}
+    .seller{font-size:12px;color:var(--muted);margin-bottom:12px}
+    .price{font-size:36px;font-weight:700;margin:8px 0}
+    .benefits{color:var(--green);font-size:14px;margin-bottom:12px}
+    .cta{display:flex;flex-direction:column;gap:10px}
+    .cta button,.cta a.ar{padding:14px 16px;border:0;border-radius:8px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
+    .buy{background:var(--blue);color:#fff}
+    .cart{background:#e3edf9;color:#0b57d0}
+    .ar{background:#222;color:#fff}
+    .specs{font-size:14px;color:#444;line-height:1.5}
+    .notice{font-size:12px;color:#999;margin-top:8px}
+    footer{margin:48px 0 24px;color:#999;text-align:center;font-size:12px}
+    .badge-ar{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;border-radius:999px;padding:6px 10px;font-size:12px;margin-left:8px}
+    .badge-ar svg{width:16px;height:16px}
+  </style>
+</head>
+<body>
+  <span class="demo-badge">Demo interna</span>
+  <header>
+    <img src="assets/logo_ml.svg" alt="logo"/>
+    <div class="search"><input placeholder="Buscar productos, marcas y más…"></div>
+  </header>
+
+  <main>
+    <section class="card gallery">
+      <div class="thumbs">
+        <img src="assets/poster.png" onclick="setHero(this.src)" alt="thumb 1">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" onclick="setHero(this.src)" alt="thumb 2">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80" onclick="setHero(this.src)" alt="thumb 3">
+      </div>
+      <div class="hero">
+        <img id="hero" src="assets/poster.png" alt="Producto">
+      </div>
+    </section>
+
+    <aside class="card">
+      <h1>Zapatillas Pro X
+        <span class="badge-ar" title="Prueba en tu espacio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8.66 5v8L12 21 3.34 16V8L12 3z" stroke="#ffe600" stroke-width="1.5"/><circle cx="12" cy="12" r="2.5" fill="#ffe600"/></svg>
+          AR disponible
+        </span>
+      </h1>
+      <div class="seller">Vendido por <strong>DemoStore</strong> | 10.000 ventas</div>
+      <div class="price">$ 99.999</div>
+      <div class="benefits">Llega gratis mañana • Devolución gratis</div>
+
+      <div class="cta">
+        <a class="ar" id="arLink" href="#">🔍 Ver en 3D / AR</a>
+        <button class="buy">Comprar ahora</button>
+        <button class="cart">Agregar al carrito</button>
+        <div class="notice">Los botones son parte de una demo y no realizan compras reales.</div>
+      </div>
+
+      <hr style="margin:16px 0;border:0;border-top:1px solid #eee">
+      <div class="specs">
+        <strong>Detalles:</strong><br>
+        Material: Malla técnica y suela EVA.<br>
+        Talles: 38–44. Colores: Negro / Blanco.<br>
+        Garantía oficial 12 meses.
+      </div>
+    </aside>
+  </main>
+
+  <footer>© Demo interna — Este prototipo no es el sitio oficial de Mercado Libre.</footer>
+
+  <script>
+    // Cambiá estas URLs si querés usar otros modelos
+    const GLB = "https://modelviewer.dev/shared-assets/models/Astronaut.glb";
+    const USDZ = "https://raw.githubusercontent.com/google/model-viewer/master/packages/shared-assets/models/Astronaut.usdz";
+    const POSTER = "https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp";
+
+    function setHero(src){ document.getElementById('hero').src = src; }
+
+    // Construye el link hacia ar.html con los parámetros correctos
+    const url = new URL(window.location.origin + window.location.pathname.replace('pdp-demo.html','') + 'ar.html');
+    url.searchParams.set('title','Zapatillas Pro X');
+    url.searchParams.set('glb', GLB);
+    url.searchParams.set('usdz', USDZ);
+    url.searchParams.set('poster', POSTER);
+    document.getElementById('arLink').href = url.toString();
+  </script>
+</body>
+</html>
