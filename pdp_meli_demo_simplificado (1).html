@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>muñeco astronauta tamaño real</title>
+  <link rel="preconnect" href="https://http2.mlstatic.com">
+  <style>
+    /* Minimal mobile-styled look inspired by Mercado Libre */
+    :root{
+      --meli-yellow:#fff159;
+      --meli-blue:#3483fa;
+      --meli-green:#00a650;
+      --text:#333;
+      --muted:#777;
+      --bg:#f5f5f5;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"; background:var(--bg); color:var(--text);}
+    header{background:var(--meli-yellow); padding:10px 16px; display:flex; align-items:center; justify-content:center; position:sticky; top:0; z-index:10; border-bottom:1px solid #e6e6e6;}
+    header .title{font-weight:600; font-size:16px; text-align:center}
+    .banner{background:#222; color:#fff; font-size:12px; padding:8px 12px; text-align:center;}
+    .container{max-width:720px; margin:0 auto; background:var(--white);}
+    .padded{padding:16px;}
+    .product-title{font-size:20px; line-height:1.25; margin:0 0 8px 0; font-weight:600;}
+    .price{font-size:28px; font-weight:700; margin:12px 0 4px 0;}
+    .free{color:var(--meli-green); font-weight:700; font-size:14px; margin-bottom:16px;}
+    .img-wrap{position:relative; background:#fff;}
+    .img-wrap img{display:block; width:100%; height:auto;}
+    .cta-wrap{position:sticky; bottom:0; background:var(--white); padding:12px 16px; border-top:1px solid #eee;}
+    .btn{display:block; width:100%; text-align:center; padding:14px 16px; border-radius:6px; border:0; cursor:pointer; font-weight:700; font-size:16px;}
+    .btn-primary{background:var(--meli-blue); color:#fff;}
+    .btn:active{transform:translateY(1px);}
+    .spacer{height:16px;}
+    .muted{color:var(--muted); font-size:12px;}
+  </style>
+</head>
+<body>
+  <div class="banner">versión de testeo, no oficial</div>
+  <header><div class="title">Mercado Libre</div></header>
+
+  <main class="container">
+    <div class="img-wrap">
+      <!-- Imagen grande a ancho completo (2D) -->
+      <img loading="eager" src="https://http2.mlstatic.com/D_NQ_NP_2X_831559-MLA82306202028_022025-O.webp" alt="muñeco astronauta tamaño real">
+    </div>
+
+    <section class="padded">
+      <h1 class="product-title">muñeco astronauta tamaño real</h1>
+      <div class="price">$ 4.500.000</div>
+      <div class="free">Envío gratis</div>
+
+      <!-- Botón directo a la vista AR/VR del prototipo existente -->
+      <a class="btn btn-primary" href="https://mduran66.github.io/MELI_3D/pdp-demo.html" target="_blank" rel="noopener">
+        Ver en 3D con AR (abrir cámara)
+      </a>
+
+      <div class="spacer"></div>
+      <p class="muted">Demo de prototipo interno. Solo para fines de presentación.</p>
+    </section>
+  </main>
+
+  <!-- Nada de “También puede interesarte”, “Productos relacionados” ni contenido extra.
+       Tampoco agregamos nada debajo de “Opiniones del producto” según el pedido.
+       Esta versión muestra únicamente lo esencial del PDP móvil + botón AR. -->
+</body>
+</html>
