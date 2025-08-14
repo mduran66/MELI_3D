@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>muñeco astronauta tamaño real • Demo</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffe600">
+  <style>
+    :root {
+      --ml-yellow:#ffe600;
+      --text:#333;
+      --muted:#666;
+      --bg:#f5f5f5;
+      --card:#fff;
+      --blue:#3483fa;
+      --green:#00a650;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:#fff; color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    /* Header estilo ML */
+    header { position:sticky; top:0; z-index:100; background:var(--ml-yellow); padding:10px 12px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(0,0,0,.05); }
+    header .logo { width:28px; height:28px; border-radius:50%; background:#111; }
+    header .search { flex:1; }
+    header .search input { width:100%; padding:10px 12px; border:0; border-radius:8px; }
+    /* Demo badge */
+    .demo { position:fixed; top:8px; right:8px; background:#111; color:#fff; font-size:11px; padding:6px 10px; border-radius:999px; z-index:200; opacity:.9; }
+    /* Contenido */
+    .wrap { max-width:600px; margin:0 auto; }
+    .title { font-size:20px; line-height:1.25; padding:12px 12px 6px; font-weight:700; }
+    .media { width:100%; }
+    .hero { width:100%; aspect-ratio: 1 / 1; background:#fafafa; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .hero img { width:100%; height:100%; object-fit:cover; }
+    .bar { padding:12px; display:flex; gap:8px; }
+    .ar-btn { flex:1; padding:14px 16px; background:#111; color:#fff; border:0; border-radius:8px; font-weight:800; text-align:center; text-decoration:none; }
+    .price { padding:8px 12px 0; font-size:28px; font-weight:800; }
+    .ship { padding:4px 12px 12px; color:var(--green); font-size:14px; }
+    .spacer { height:12px; background:#f5f5f5; }
+    footer { padding:24px 12px; color:#999; font-size:12px; text-align:center; }
+  </style>
+</head>
+<body>
+  <div class="demo">Demo interna</div>
+  <header>
+    <div class="logo"></div>
+    <div class="search"><input placeholder="Buscar productos, marcas y más…"></div>
+  </header>
+
+  <div class="wrap">
+    <div class="title">muñeco astronauta tamaño real</div>
+
+    <div class="media">
+      <div class="hero">
+        <img src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp" alt="Astronauta 2D">
+      </div>
+      <div class="bar">
+        <a id="arLink" class="ar-btn" href="#">Ver en 3D / AR</a>
+      </div>
+    </div>
+
+    <div class="price">$ 4.500.000</div>
+    <div class="ship">Envío gratis</div>
+
+    <div class="spacer"></div>
+  </div>
+
+  <footer>© Demo interna — Este prototipo no es el sitio oficial de Mercado Libre.</footer>
+
+  <script>
+    // URLs del modelo (Astronauta). Podés cambiarlas por las de tu producto.
+    const GLB   = "https://modelviewer.dev/shared-assets/models/Astronaut.glb";
+    const USDZ  = "https://raw.githubusercontent.com/google/model-viewer/master/packages/shared-assets/models/Astronaut.usdz";
+    const TITLE = "muñeco astronauta tamaño real";
+
+    // Fallback a nuestro visor ar.html, por si el dispositivo no soporta los links nativos
+    const fallback = new URL(location.origin + location.pathname.replace('pdp-mobile.html','') + 'ar.html');
+    fallback.searchParams.set('title', TITLE);
+    fallback.searchParams.set('glb', GLB);
+    fallback.searchParams.set('usdz', USDZ);
+    fallback.searchParams.set('poster', "https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp");
+
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    const link = document.getElementById('arLink');
+
+    if (isIOS) {
+      // Quick Look (USDZ) abre cámara directo
+      link.setAttribute('rel', 'ar');
+      link.setAttribute('href', USDZ);
+    } else if (isAndroid) {
+      // Scene Viewer (GLB) abre cámara directo
+      const sceneURL = new URL("https://arvr.google.com/scene-viewer/1.0");
+      sceneURL.searchParams.set('file', GLB);
+      sceneURL.searchParams.set('mode', 'ar_only'); // o 'ar_preferred'
+      sceneURL.searchParams.set('title', TITLE);
+      link.setAttribute('href', sceneURL.toString());
+    } else {
+      // Desktop y otros: usar visor web como respaldo
+      link.setAttribute('href', fallback.toString());
+    }
+  </script>
+</body>
+</html>
